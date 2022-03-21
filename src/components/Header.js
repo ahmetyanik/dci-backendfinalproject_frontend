@@ -5,13 +5,25 @@ function Header() {
   
 const [stadt, setStadt]= useState('')
 
-  const submitHandler = (event) => {
+  const submitHandler =async (event) => {
     event.preventDefault();
     const data = document.querySelector('#input')
     const value = data.value;
     setStadt(value)
+    postcity()
   }
 console.log(stadt);
+
+async function postcity (){
+   await fetch('http://localhost:4000/city', {
+    method : 'POST',
+    headers: {
+      "Content-Type" : "application/json",
+    }, 
+    body: JSON.stringify({"city": stadt})
+  }
+  )
+}
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
