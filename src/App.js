@@ -12,7 +12,7 @@ import Homepage from "./components/Homepage";
 function App() {
   return (
     <div className="App">
-      <DataStore.Provider>
+      <DataStore.Provider value={{}}>
         <Routes>
           <Route exact path="/" element={<Homepage />} />
         </Routes>
