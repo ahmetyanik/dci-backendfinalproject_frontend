@@ -1,39 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
+import { DataStore } from "../DataStore";
 
 function Header() {
- 
+
+  const {cityAdded,setCityAdded} = useContext(DataStore);
+
 
   const submitHandler = async (event) => {
-      event.preventDefault();
+    event.preventDefault();
 
-      
-      
-      try{
-          
-          const data = document.querySelector("#input");
-          const value = await data.value;
-    
-        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=a7ccf39f58624360e151dce17c818ef3`).then(data=>data.json())
+    try {
+      const data = document.querySelector("#input");
+      const value = await data.value;
 
-        if(result.name){
+      const result = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=67818b426d1cf9e2103d756347f88894`
+      ).then((data) => data.json());
 
-            
-             await fetch("http://localhost:4000/city", {
-               method: "POST",
-               headers: {
-                 "Content-Type": "application/json",
-               },
-               body: JSON.stringify({ city: value }),
-             });
+      if (result.name) {
+        await fetch("http://localhost:4000/city", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ city: value }),
+        });
 
-        }else{
-            console.log("There is an error!!!");
-        }
-
-    }catch(err){
-        console.log("Fehlermeldung:",err);
+        setCityAdded(result.name);
+      } else {
+        console.log("There is an error!!!");
+      }
+    } catch (err) {
+      console.log("Fehlermeldung:", err);
     }
-
   };
 
   return (
@@ -101,7 +100,7 @@ function Header() {
               <a className="nav-link disabled">Disabled</a>
             </li>
           </ul>
-          <form className="d-flex" onSubmit={submitHandler}>
+          <form  className="d-flex" onSubmit={submitHandler} >
             <input
               id="input"
               className="form-control me-2"
@@ -113,6 +112,7 @@ function Header() {
               Search
             </button>
           </form>
+          
         </div>
       </div>
     </nav>
