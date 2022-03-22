@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { DataStore } from "../DataStore";
 
 function Header() {
- 
+ const {setCityAdded} = useContext(DataStore)
 
   const submitHandler = async (event) => {
       event.preventDefault();
@@ -13,7 +14,7 @@ function Header() {
           const data = document.querySelector("#input");
           const value = await data.value;
     
-        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=a7ccf39f58624360e151dce17c818ef3`).then(data=>data.json())
+        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=c9691a6409a4f0aa1a1e0eba2d123e0b`).then(data=>data.json())
 
         if(result.name){
 
@@ -25,7 +26,7 @@ function Header() {
                },
                body: JSON.stringify({ city: value }),
              });
-
+             setCityAdded(result.name)
         }else{
             console.log("There is an error!!!");
         }
