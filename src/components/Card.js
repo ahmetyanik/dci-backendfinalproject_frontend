@@ -13,6 +13,15 @@ function Card({ name }) {
       .then((data) => setCityDatas(data));
   }, []);
 
+  async function deleteCard(){
+     await fetch(`http://localhost:4000/city/delete/${name}`,{
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8' }
+    })
+  }
+
+
   return (
     <div className="card m-2" style={{ width: "18rem" }}>
       <img src="..." className="card-img-top" alt="..." />
@@ -24,6 +33,9 @@ function Card({ name }) {
         <Link to={`/city/${name}`} className="btn btn-dark">
           Go somewhere
         </Link>
+        <button className="btn btn-danger mx-2" onClick={deleteCard}>
+          Delete
+        </button>
       </div>
     </div>
   );
