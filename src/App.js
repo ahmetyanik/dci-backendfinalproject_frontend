@@ -12,7 +12,7 @@ import Homepage from "./components/Homepage";
 function App() {
 
   const [allCities, setAllCities] = useState([]);
-  const [cityAdded,setCityAdded] = useState("merhaba");
+  const [cityAdded,setCityAdded] = useState("");
 
   const getAllCitiesFromDatabase = async () => {
     fetch("http://localhost:4000/city")
