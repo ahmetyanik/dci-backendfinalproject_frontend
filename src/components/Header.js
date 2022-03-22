@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { DataStore } from "../DataStore";
 
 function Header() {
@@ -40,9 +41,9 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link to={"/"} className="navbar-brand" href="#">
           Navbar
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

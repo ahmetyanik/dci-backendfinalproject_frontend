@@ -10,7 +10,7 @@ export default function Homepage() {
   return (
     <div>
         <Header/>
-        <div className="d-flex flex-wrap justify-content-center">
+        <div style={{minHeight:"40vh"}} className="d-flex flex-wrap justify-content-center align-items-center">
         {
           allCities.map(city => {
             return <Card

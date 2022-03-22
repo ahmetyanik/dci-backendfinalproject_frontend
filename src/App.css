@@ -36,3 +36,64 @@
     transform: rotate(360deg);
   }
 }
+
+.clear{
+  background-image: url("https://cdn.pixabay.com/photo/2017/11/04/08/14/tree-2916763__340.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.fewClouds{
+  background-image: url("https://media.istockphoto.com/photos/clear-sky-picture-id182355595?k=20&m=182355595&s=170667a&w=0&h=IDWe_4WTL-03oXd0E15r5uwqzXwmEC5oRlSzQM47JSY=");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.scatteredClouds{
+  background-image: url("https://media.istockphoto.com/photos/cirrocumulus-clouds-cloudscape-picture-id645173476?b=1&k=20&m=645173476&s=170667a&w=0&h=0wdytj1LA3mA1Jzp0j6_rgip60BxH9e5BAAE_vFlJQE=");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.brokenClouds{
+  background-image: url("https://media.istockphoto.com/photos/clear-sky-picture-id182355595?k=20&m=182355595&s=170667a&w=0&h=IDWe_4WTL-03oXd0E15r5uwqzXwmEC5oRlSzQM47JSY=");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.showerRain{
+  background-image: url("https://media.istockphoto.com/photos/clear-sky-picture-id182355595?k=20&m=182355595&s=170667a&w=0&h=IDWe_4WTL-03oXd0E15r5uwqzXwmEC5oRlSzQM47JSY=");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.rain{
+  background-image: url("https://media.premiumtimesng.com/wp-content/files/2021/08/freepressjournal_2021-07_eac3ac3c-ea97-47aa-a468-ace529d42d50_rain_raining_raindrops_wet_spring_summer_fall_weather_generic.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.thunderstorm{
+  background-image: url("https://media.istockphoto.com/photos/clear-sky-picture-id182355595?k=20&m=182355595&s=170667a&w=0&h=IDWe_4WTL-03oXd0E15r5uwqzXwmEC5oRlSzQM47JSY=");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.snow{
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiPI1MtxPEzuKIflAP4jAubQpn9qUja3Gbjn8b7kRHQy7unwLhdc3gPyFrP53x5fR-gRo&usqp=CAU");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.mist{
+  background-image: url("https://media.istockphoto.com/photos/clear-sky-picture-id182355595?k=20&m=182355595&s=170667a&w=0&h=IDWe_4WTL-03oXd0E15r5uwqzXwmEC5oRlSzQM47JSY=");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.other{
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKD3QYvvsDtTnW6UWTuiKmUj3FiLk_t7gOmNqX15nmC7gACJO4AzGF7hrxdNpslOyVJTk&usqp=CAU");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

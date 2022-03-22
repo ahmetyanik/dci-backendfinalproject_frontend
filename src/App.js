@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { DataStore } from "./DataStore";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
+import Citypage from "./components/Citypage";
 
-// api adress: https://api.openweathermap.org/data/2.5/weather?q=Ankara&appid=a7ccf39f58624360e151dce17c818ef3
 
 function App() {
 
@@ -23,13 +23,13 @@ function App() {
     useEffect(()=>{
       getCitiesfromDb()
     },[cityAdded])
-    console.log(allCities);
 
   return (
     <div className="App">
       <DataStore.Provider value={{allCities, setAllCities, setCityAdded}}>
         <Routes>
           <Route exact path="/" element={<Homepage />} />
+          <Route exact path="/city/:cityname" element={<Citypage/>} />
         </Routes>
       </DataStore.Provider>
     </div>
