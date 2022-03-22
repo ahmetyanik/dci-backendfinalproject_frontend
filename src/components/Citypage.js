@@ -6,7 +6,7 @@ function Citypage() {
   const params = useParams();
   const city = params.cityname;
 
-  const [selectedCity, setSelectedCity] = useState({weather:[{description:""}]});
+  const [selectedCity, setSelectedCity] = useState({weather:[{description:""}],main:{temp:0}});
   const [condition,setCondition] = useState("");
 
   console.log(selectedCity);
@@ -77,6 +77,17 @@ function Citypage() {
           
         >
           {selectedCity.name}
+          <div className="d-flex flex-column align-items-center fs-1">
+            <div className="d-flex p-3">
+              <label className='pe-3'>Temp</label>
+              <div>{(selectedCity.main.temp + -272.15).toFixed(1)+'°'}</div>
+            </div>
+            <div className="d-flex p-3">
+              <label className='pe-3'>Feels Like</label>
+              <div>{(selectedCity.main.feels_like + -272.15).toFixed(1)+'°'}</div>
+            </div>
+            
+          </div>
         </div>
       </div>
     </div>
