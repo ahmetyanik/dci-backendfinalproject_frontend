@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { DataStore } from "../DataStore";
 
 function Card({ name }) {
+
+  const {setCityAdded} = useContext(DataStore)
+
   const [cityDatas, setCityDatas] = useState({ main: { temp: 0 } });
 
   useEffect(() => {
@@ -18,7 +22,9 @@ function Card({ name }) {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json; charset=UTF-8' }
-    })
+    })    
+
+    setCityAdded(name);
   }
 
 
