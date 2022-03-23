@@ -7,6 +7,8 @@ import { DataStore } from "./DataStore";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Citypage from "./components/Citypage";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 
 function App() {
@@ -28,8 +30,11 @@ function App() {
     <div className="App">
       <DataStore.Provider value={{allCities, setAllCities, setCityAdded}}>
         <Routes>
-          <Route exact path="/" element={<Homepage />} />
-          <Route exact path="/city/:cityname" element={<Citypage/>} />
+          <Route  path="/homepage" element={<Homepage />} />
+          <Route  path="/city/:cityname" element={<Citypage/>} />
+          <Route exact path="/" element={<Register/>} />
+          <Route path="/login" element={<Login/>} />
+
         </Routes>
       </DataStore.Provider>
     </div>
