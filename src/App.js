@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route  path="/homepage" element={<Homepage />} />
           <Route  path="/city/:cityname" element={<Citypage/>} />
-          <Route exact path="/" element={<Register/>} />
+          <Route exact path="/" element={localStorage.wetterToken ? <Homepage/> : <Register/> } />
           <Route path="/login" element={<Login/>} />
 
         </Routes>

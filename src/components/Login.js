@@ -12,14 +12,17 @@ export default function Login() {
       e.preventDefault();
       
   
-      fetch(USER_PATH, {
+      const response= await fetch(USER_PATH, {
         method: "POST",
         headers: {
           Accept: 'application/json',
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password}),
-      })
+      }).then(data=>data.json())
+
+      const result = response.token
+      localStorage.wetterToken=result
   
   
   
