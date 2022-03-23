@@ -24,7 +24,7 @@ function Card({ name }) {
         'Content-type': 'application/json; charset=UTF-8' }
     })    
 
-    setCityAdded(name);
+    setCityAdded("Deleted: "+name);
   }
 
 
