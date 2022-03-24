@@ -22,9 +22,14 @@ export default function Login() {
     }).then((data) => data.json());
 
     const result = response.token;
-    localStorage.weatherToken = await result;
 
-    navigate("/homepage");
+    if(result){
+      
+      localStorage.weatherToken = await result;
+  
+      navigate("/homepage");
+    }
+
   };
 
   return (
