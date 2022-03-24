@@ -8,9 +8,9 @@ export default function Homepage() {
   const {allCities, setAllCities} = useContext(DataStore);
 
   return (
-    <div>
+    <div className="homepage">
         <Header/>
-        <div style={{minHeight:"40vh"}} className="d-flex flex-wrap justify-content-center align-items-center">
+        <div style={{minHeight:"40vh"}} className="container d-flex flex-wrap justify-content-center align-items-center">
         {
           allCities.map(city => {
             return <Card
