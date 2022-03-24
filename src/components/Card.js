@@ -18,12 +18,18 @@ function Card({ name }) {
   }, []);
 
   async function deleteCard(){
-     await fetch(`http://localhost:4000/city/delete/${name}`,{
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8' }
-    })    
 
+    console.log("BURASI CALISTI...");
+
+     const response = await fetch(`http://localhost:4000/city/delete/${name}`,{
+      method: 'PUT',
+      Accept: "application/json",
+      headers: {
+        'Content-type': 'application/json' ,
+        Authorization: `Bearer ${localStorage.weatherToken}`
+    }})  
+    
+    
     setCityAdded("Deleted: "+name);
   }
 

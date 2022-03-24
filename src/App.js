@@ -18,6 +18,7 @@ function App() {
   const [allCities, setAllCities] = useState([])
 
   console.log("ALL CITIES:", allCities);
+  console.log(cityAdded);
 
 
 
