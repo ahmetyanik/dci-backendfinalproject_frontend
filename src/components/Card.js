@@ -6,7 +6,7 @@ function Card({ name }) {
 
   const {setCityAdded} = useContext(DataStore)
 
-  const [cityDatas, setCityDatas] = useState({ main: { temp: 0 } });
+  const [cityDatas, setCityDatas] = useState({ main: { temp: 0 }, weather: [0]});
 
   useEffect(() => {
     fetch(
@@ -28,16 +28,17 @@ function Card({ name }) {
   }
 
 
+
   return (
     <div className="card m-2" style={{ width: "18rem" }}>
-      <img src="..." className="card-img-top" alt="..." />
+      <img src={`http://openweathermap.org/img/wn/${cityDatas.weather[0].icon}@2x.png`} className="card-img-top weather-icon m-auto" alt="weather icon" />
       <div className="card-body">
-        <h5 className="card-title">{name}</h5>
+        <h5 className="card-title">{name.toUpperCase()}</h5>
         <p className="card-text">
-          {(cityDatas.main.temp + -272.15).toFixed(1)}
+          {(cityDatas.main.temp + -272.15).toFixed(1)+'°'}
         </p>
         <Link to={`/city/${name}`} className="btn btn-dark">
-          Go somewhere
+          More
         </Link>
         <button className="btn btn-danger mx-2" onClick={deleteCard}>
           Delete
