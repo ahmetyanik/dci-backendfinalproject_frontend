@@ -1,42 +1,41 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { DataStore } from "../DataStore";
-import Logo from "../logoweather.svg"
+import Logo from "../logoweather.svg";
 
 function Header() {
- const {setCityAdded} = useContext(DataStore)
+  const navigate = useNavigate();
+
+  const { setCityAdded } = useContext(DataStore);
 
   const submitHandler = async (event) => {
-      event.preventDefault();
+    event.preventDefault();
 
-      
-      
-      try{
-          
-          const data = document.querySelector("#input");
-          const value = await data.value;
-    
-        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=c9691a6409a4f0aa1a1e0eba2d123e0b`).then(data=>data.json())
+    try {
+      const data = document.querySelector("#input");
+      const value = await data.value;
 
-        if(result.name){
+      const result = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=c9691a6409a4f0aa1a1e0eba2d123e0b`
+      ).then((data) => data.json());
 
-            
-             await fetch("http://localhost:4000/city", {
-               method: "POST",
-               headers: {
-                 "Content-Type": "application/json",
-               },
-               body: JSON.stringify({ city: value }),
-             });
-             setCityAdded(result.name)
-        }else{
-            console.log("There is an error!!!");
-        }
-
-    }catch(err){
-        console.log("Fehlermeldung:",err);
+      if (result.name) {
+        await fetch("http://localhost:4000/city", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.weatherToken}`
+          },
+          body: JSON.stringify({ city: value }),
+        });
+        console.log("SEHIR EKLEME");
+        setCityAdded(result.name);
+      } else {
+        console.log("There is an error!!!");
+      }
+    } catch (err) {
+      console.log("Fehlermeldung:", err);
     }
-
   };
 
   return (
@@ -45,7 +44,7 @@ function Header() {
         <Link to={"/"} className="" href="#">
           <img src={Logo} className="logo pt-4"></img>
         </Link>
-        
+
         <div>
           <form className="" onSubmit={submitHandler}>
             <input
@@ -61,6 +60,14 @@ function Header() {
           </form>
         </div>
       </div>
+      <button
+        onClick={() => {
+          localStorage.removeItem("weatherToken");
+          navigate("/login");
+        }}
+      >
+        Log Out
+      </button>
     </nav>
   );
 }
