@@ -17,22 +17,17 @@ function App() {
 
   const [allCities, setAllCities] = useState([])
 
-  async function getCitiesfromDb() {
-    fetch('http://localhost:4000/city').then(data=>data.json()).then(data=>setAllCities(data));
+  console.log("ALL CITIES:", allCities);
 
-  }
 
-    useEffect(()=>{
-      getCitiesfromDb()
-    },[cityAdded])
 
   return (
     <div className="App">
-      <DataStore.Provider value={{allCities, setAllCities, setCityAdded}}>
+      <DataStore.Provider value={{allCities, setAllCities,cityAdded, setCityAdded}}>
         <Routes>
           <Route  path="/homepage" element={<Homepage />} />
           <Route  path="/city/:cityname" element={<Citypage/>} />
-          <Route exact path="/" element={localStorage.wetterToken ? <Homepage/> : <Register/> } />
+          <Route exact path="/" element={localStorage.weatherToken ? <Homepage/> : <Register/> } />
           <Route path="/login" element={<Login/>} />
 
         </Routes>
