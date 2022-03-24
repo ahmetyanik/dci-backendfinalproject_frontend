@@ -23,12 +23,10 @@ export default function Homepage() {
   }, [cityAdded]);
 
   return (
-    <div className="homepage">
+
+    <div className="homepage m-0 p-0">
       <Header />
-      <div
-        style={{ minHeight: "40vh" }}
-        className="container d-flex flex-wrap justify-content-center align-items-center"
-      >
+       <div style={{minHeight:"40vh"}} className="container d-flex flex-wrap justify-content-center align-items-center">
         {allCities.map((city,index) => {
           return <Card key={index} name={city} />;
         })}

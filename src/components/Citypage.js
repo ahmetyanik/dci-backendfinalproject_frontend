@@ -7,7 +7,7 @@ function Citypage() {
   const params = useParams();
   const city = params.cityname;
 
-  const [selectedCity, setSelectedCity] = useState({ weather: [{ description: "" }], main: { temp: 0 } });
+  const [selectedCity, setSelectedCity] = useState({ weather: [0], main: { temp: 0 } });
   const [condition, setCondition] = useState("");
 
   console.log(selectedCity);
@@ -22,39 +22,45 @@ function Citypage() {
       .then((data) => setSelectedCity(data));
   }, []);
 
+  console.log(selectedCity.weather[0].main);
   console.log(selectedCity.weather[0].description);
 
   async function getWetterCondition() {
+    const weatherStatus = selectedCity.weather[0].main.toLowerCase();
 
+    const weatherDescription = selectedCity.weather[0].description;
 
-
-    if (selectedCity.weather[0].description === "clear sky") {
+    if (weatherStatus === "clear") {
       setCondition("clear")
-    } else if (selectedCity.weather[0].description === "few clouds") {
+
+    } else if (weatherDescription === "few clouds") {
       setCondition("fewClouds");
 
-    } else if (selectedCity.weather[0].description === "scattered clouds") {
+    } else if (weatherDescription === "scattered clouds") {
       setCondition("scatteredClouds")
 
-    } else if (selectedCity.weather[0].description === "broken clouds") {
+    } else if (weatherDescription === "broken clouds") {
       setCondition("brokenClouds");
+    }
+    else if (weatherStatus === "clouds") {
+      setCondition("brokenClouds")
 
-    } else if (selectedCity.weather[0].description === "scattered clouds") {
-      setCondition("scatteredClouds");
-
-    } else if (selectedCity.weather[0].description === "shower rain") {
+    } else if (weatherDescription === "shower rain") {
       setCondition("showerRain");
 
-    } else if (selectedCity.weather[0].description === "rain") {
+    } else if (weatherDescription === "rain") {
       setCondition("rain");
 
-    } else if (selectedCity.weather[0].description === "thunderstorm") {
+    } else if (weatherStatus === "rain") {
+      setCondition("rain");
+
+    } else if (weatherStatus === "thunderstorm") {
       setCondition("thunderstorm");
 
-    } else if (selectedCity.weather[0].description === "snow") {
+    } else if (weatherStatus === "snow") {
       setCondition("snow");
 
-    } else if (selectedCity.weather[0].description === "mist") {
+    } else if (weatherStatus === "mist") {
       setCondition("mist");
     } else {
       setCondition("other");
@@ -68,40 +74,49 @@ function Citypage() {
 
   console.log("CONDITION:", condition);
 
+  function upperCase(param) {
+    const array = param.split(' ');
+
+    for (let i = 0; i < array.length; i++) {
+      array[i] = array[i][0].toUpperCase() + array[i].substr(1);
+    }
+    return array.join(" ");
+  }
+  console.log(upperCase("carol vargas"));
+
+
   return (
-    <div style={{ minHeight: "100vh" }} className={condition}>
+    <div style={{ minHeight: "100vh" }} className={`${condition} pt-5`}>
       <div className="container-logo-search pb-4 pt-1 mb-5">
         <img src={Logo} className="logo p-3"></img>
         <Link to={"/homepage"} className="" href="#">
-         <button className="btn btn-danger mx-2">Go Home</button>
+          <button className="btn btn-danger mx-2">Go Home</button>
         </Link>
       </div>
 
-      <div>
-        <div
-          className="text-light bg-dark bg-opacity-25 box-citypage" style={{ fontSize: "4rem" }}
+      <div className="d-flex flex-column">
+        <h2
+          className="text-dark bg-light bg-opacity-50 box-citypage p-2" style={{ fontSize: "3rem" }}>{selectedCity.name}</h2>
 
-        >
-          {selectedCity.name}
-          <div className="d-flex flex-column align-items-center fs-1">
-            <div className="d-flex p-3">
-              <label className='pe-3'>Temp</label>
-              {(selectedCity.main.temp + -272.15).toFixed(1) + '°'}
-            </div>
-            <div className="d-flex p-3">
-              <label className='pe-3'>Feels Like</label>
-              {(selectedCity.main.feels_like + -272.15).toFixed(1) + '°'}
-            </div>
-            <div>
-            <label className='pe-3'>{(selectedCity.weather[0].main)}</label>
-            
+        <div className="align-items-center text-citypage box-citypage bg-light bg-opacity-50 mt-2">
+          <div className="d-flex flex-colum p-3">
+            <label className='pe-3'>Temp</label>
+            {(selectedCity.main.temp + -272.15).toFixed(1) + '°'}
+          </div>
+          <div className="d-flex p-3">
+            <label className='pe-3'>Feels Like</label>
+            {(selectedCity.main.feels_like + -272.15).toFixed(1) + '°'}
+          </div>
+          <div className="align-items-end">
+            <label className='pe-3'>{/* {upperCase(selectedCity.weather[0].description)} */}{(selectedCity.weather[0].description)}</label>
+
             <img src={`http://openweathermap.org/img/wn/${selectedCity.weather[0].icon}@2x.png`} className="card-img-top weather-icon m-auto" alt="weather icon" />
-              
-            </div>
-
           </div>
         </div>
+        <div className={`${condition} img-weather mt-2`} ></div>
       </div>
+
+
     </div>
   );
 }
