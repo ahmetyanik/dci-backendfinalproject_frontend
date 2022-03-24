@@ -7,7 +7,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const USER_PATH = "http://localhost:4000/user/login/";
+  const USER_PATH = "https://weatherbackenddci.herokuapp.com/user/login/";
 
   const submitHandler = async (e) => {
     e.preventDefault();
