@@ -54,13 +54,10 @@ function Header() {
               placeholder="City"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success m-3" type="submit">
+            <button className="btn btn-outline-dark btn-color m-3" type="submit">
               Search
             </button>
-          </form>
-        </div>
-      </div>
-      <button
+            <button className="btn btn-dark"
         onClick={() => {
           localStorage.removeItem("weatherToken");
           navigate("/login");
@@ -68,6 +65,10 @@ function Header() {
       >
         Log Out
       </button>
+          </form>
+        </div>
+      </div>
+      
     </nav>
   );
 }

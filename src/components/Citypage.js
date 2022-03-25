@@ -84,13 +84,12 @@ function Citypage() {
   }
   console.log(upperCase("carol vargas"));
 
-
   return (
     <div style={{ minHeight: "100vh" }} className={`${condition} pt-5`}>
       <div className="container-logo-search pb-4 pt-1 mb-5">
         <img src={Logo} className="logo p-3"></img>
         <Link to={"/homepage"} className="" href="#">
-          <button className="btn btn-danger mx-2">Go Home</button>
+          <button className="btn btn-dark btn-color mx-2">Go Home</button>
         </Link>
       </div>
 
@@ -107,7 +106,7 @@ function Citypage() {
             <label className='pe-3'>Feels Like</label>
             {(selectedCity.main.feels_like + -272.15).toFixed(1) + '°'}
           </div>
-          <div className="align-items-end">
+          <div className="bkg-blue">
             <label className='pe-3'>{/* {upperCase(selectedCity.weather[0].description)} */}{(selectedCity.weather[0].description)}</label>
 
             <img src={`http://openweathermap.org/img/wn/${selectedCity.weather[0].icon}@2x.png`} className="card-img-top weather-icon m-auto" alt="weather icon" />
