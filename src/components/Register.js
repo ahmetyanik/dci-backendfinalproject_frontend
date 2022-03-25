@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import registerImg from "../img.png"
 
 export default function Register() {
     const [userName, setUserName] = useState("");
@@ -32,7 +33,7 @@ export default function Register() {
     };
   return (
     <div>
-      <section style={{ backgroundColor: "#eee" }}>
+      <section className="vh-100"style={{ backgroundColor: "#eee" }}>
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center">
             <div className="col-lg-12 col-xl-11">
@@ -127,7 +128,7 @@ export default function Register() {
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                           <button
                             type="button"
-                            className="btn btn-primary btn-lg"
+                            className="btn btn-danger btn-lg"
                             onClick={submitHandler}
                           >
                             Register
@@ -135,7 +136,7 @@ export default function Register() {
                           <Link
                             to={'/login'}
                             type="button"
-                            className="btn btn-success btn-lg mx-3"
+                            className="btn btn-primary btn-color btn-lg mx-3"
                           >
                             Login
                           </Link>
@@ -144,7 +145,7 @@ export default function Register() {
                     </div>
                     <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                       <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                        src={registerImg}
                         className="img-fluid"
                         alt="Sample image"
                       />
