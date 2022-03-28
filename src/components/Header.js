@@ -20,7 +20,7 @@ function Header() {
       ).then((data) => data.json());
 
       if (result.name) {
-        await fetch("https://weatherbackenddci.herokuapp.com/city", {
+        await fetch("https://weatherbackenddci2.herokuapp.com/city", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

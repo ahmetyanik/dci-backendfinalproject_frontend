@@ -7,7 +7,7 @@ export default function Homepage() {
   const { allCities, setAllCities, cityAdded } = useContext(DataStore);
 
   async function getCitiesfromDb() {
-    const response = await fetch("https://weatherbackenddci.herokuapp.com/city", {
+    const response = await fetch("https://weatherbackenddci2.herokuapp.com/city", {
       method: "GET",
       Accept: "application/json",
       headers: {

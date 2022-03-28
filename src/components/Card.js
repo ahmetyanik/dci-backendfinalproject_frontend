@@ -21,7 +21,7 @@ function Card({ name }) {
 
     console.log("BURASI CALISTI...");
 
-     const response = await fetch(`https://weatherbackenddci.herokuapp.com/city/delete/${name}`,{
+     const response = await fetch(`https://weatherbackenddci2.herokuapp.com/city/delete/${name}`,{
       method: 'PUT',
       Accept: "application/json",
       headers: {

@@ -10,7 +10,7 @@ export default function Register() {
   
   
   
-    const USER_PATH= 'https://weatherbackenddci.herokuapp.com/user/register/'
+    const USER_PATH= 'https://weatherbackenddci2.herokuapp.com/user/register/'
   
     const submitHandler = async (e) => {
       e.preventDefault();
